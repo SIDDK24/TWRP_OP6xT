@@ -1,5 +1,5 @@
 
-LOCAL_PATH := device/oneplus/fajita
+LOCAL_PATH := device/oneplus/enchilada
 
 # define hardware platform
 PRODUCT_PLATFORM := sdm845

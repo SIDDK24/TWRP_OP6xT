@@ -1,7 +1,7 @@
-# Device Tree for OnePlus 6T (fajita)
+# Device Tree for OnePlus 6 (enchilada)
 
-The OnePlus 6T (codenamed _"fajita"_) is a flagship smartphone from OnePlus.
-It was released in Novemeber 2018.
+The OnePlus 6 (codenamed _"enchilada"_) is a flagship smartphone from OnePlus.
+It was released in May 2018.
 
 | Basic                   | Spec Sheet                                                                                                                     |
 | -----------------------:|:------------------------------------------------------------------------------------------------------------------------------ |
@@ -36,7 +36,7 @@ Then add these string to .repo/manifests/remove.xml
 Then add these projects to .repo/local_manifests/roomservice.xml (If you don't have it, you can add them to .repo/manifest.xml): 
 
 ```xml
-<project name="mauronofrio/android_device_oneplus_fajita" path="device/oneplus/fajita" remote="github" revision="android-9.0" />
+<project name="mauronofrio/android_device_oneplus_enchilada" path="device/oneplus/enchilada" remote="github" revision="android-9.0" />
 <project name="mauronofrio/android_bootable_recovery" path="bootable/recovery" remote="github" revision="android-9.0" />
 <project name="android_external_busybox" path="external/busybox" remote="TeamWin" revision="android-9.0" />
 ```
@@ -54,16 +54,15 @@ Finally execute these:
 . build/envsetup.sh
 export ALLOW_MISSING_DEPENDENCIES=true
 export LC_ALL=C
-lunch omni_fajita-eng 
+lunch omni_enchilada-eng 
 mka adbd recoveryimage 
 ```
 
 To test it:
 
 ```
-fastboot boot out/target/product/fajita/recovery.img
+fastboot boot out/target/product/enchilada/recovery.img
 ```
 
-Kernel Source: https://github.com/pappschlumpf/op6/tree/9.0
+Kernel Source: Prebuilt
 ## Credits
-I want to say a big thanks to @twinnfamous

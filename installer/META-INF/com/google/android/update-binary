@@ -13,7 +13,7 @@ ps | grep zygote | grep -v grep >/dev/null && BOOTMODE=true || BOOTMODE=false;
 $BOOTMODE || ps -A 2>/dev/null | grep zygote | grep -v grep >/dev/null && BOOTMODE=true;
 
 ui_print "########################################";
-ui_print "#    TWRP installer for OnePlus 6T     #";
+ui_print "#     TWRP installer for OnePlus 6     #";
 ui_print "#            by Mauronofrio            #";
 ui_print "########################################";
 ui_print " ";

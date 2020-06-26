@@ -95,7 +95,7 @@ service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
+service keymaster-3-0 /sbin/android.hardware.keymaster@3.0-service-qti
     user root
     group root
     disabled
@@ -146,11 +146,11 @@ on init
     start boot-1-0
     start prepdecrypt
     start time_daemon
-    setprop crypto.ready 1
+#    setprop crypto.ready 1
 
 on property:crypto.ready=0
     stop sbinqseecomd
-    stop keymaster-4-0
+    stop keymaster-3-0
     stop gatekeeper-1-0
     stop servicemanager
 
@@ -158,7 +158,7 @@ on property:crypto.ready=1
     start sbinqseecomd
 
 on property:vendor.sys.listeners.registered=true
-    start keymaster-4-0
+    start keymaster-3-0
     start gatekeeper-1-0
     start servicemanager
     restart time_daemon
