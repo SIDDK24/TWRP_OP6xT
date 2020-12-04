@@ -16,53 +16,6 @@ It was released in May 2018.
 | Camera (Back)           | Dual: 16 MP (f/1.7, 27mm, 1/2.6", 1.22µm, gyro-EIS, OIS) + 20 MP (16 MP effective, f/1.7, 1/2.8", 1.0µm), PDAF, dual-LED flash |
 | Camera (Front)          | 16 MP (f/2.0, 25mm, 1/3", 1.0µm), gyro-EIS, Auto HDR, 1080p                                                                    |
 
-Copyright 2018 - The LineageOS Project.
 
-
-
-## Compile
-
-First download omni-9.0 tree:
-
-```
-repo init --depth=1 -u https://github.com/omnirom/android.git -b android-9.0
-```
-Then add these string to .repo/manifests/remove.xml
-
-```
-<remove-project name="platform/bootable/recovery" />
-```
-
-Then add these projects to .repo/local_manifests/roomservice.xml (If you don't have it, you can add them to .repo/manifest.xml): 
-
-```xml
-<project name="mauronofrio/android_device_oneplus_enchilada" path="device/oneplus/enchilada" remote="github" revision="android-9.0" />
-<project name="mauronofrio/android_bootable_recovery" path="bootable/recovery" remote="github" revision="android-9.0" />
-<project name="android_external_busybox" path="external/busybox" remote="TeamWin" revision="android-9.0" />
-```
-
-Now you can sync your source:
-
-```
-repo sync
-```
-Actually i'm using this bootable/recovery: https://github.com/mauronofrio/android_bootable_recovery
-
-Finally execute these:
-
-```
-. build/envsetup.sh
-export ALLOW_MISSING_DEPENDENCIES=true
-export LC_ALL=C
-lunch omni_enchilada-eng 
-mka adbd recoveryimage 
-```
-
-To test it:
-
-```
-fastboot boot out/target/product/enchilada/recovery.img
-```
-
-Kernel Source: Prebuilt
 ## Credits
+Special Thanks to Mauronofrio

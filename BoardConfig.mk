@@ -143,3 +143,5 @@ TW_NO_USB_STORAGE := true
 PLATFORM_VERSION := 16.1.0
 TW_INCLUDE_RESETPROP := true
 
+# PBRP specific build flags
+PB_TORCH_PATH := "/sys/class/leds/led:torch_0"
