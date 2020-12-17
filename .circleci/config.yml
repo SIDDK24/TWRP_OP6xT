@@ -14,10 +14,12 @@ jobs:
       VENDOR: 'oneplus'
       CODENAME: 'enchilada'
       FLAVOR: 'eng'
-      TEST_BUILD: 'true'
+      PB_OFFICIAL: 'true'
+      #TEST_BUILD: 'true'
       MAINTAINER: '@SIDDK'
       CHANGELOG: |
-        - Test Build
+        - Fixed Android 11 Decryption
+        - Notch Adjustment
     working_directory: /home/builder/pitchblack
     steps:
       - run:
