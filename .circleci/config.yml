@@ -18,8 +18,7 @@ jobs:
       #TEST_BUILD: 'true'
       MAINTAINER: '@SIDDK'
       CHANGELOG: |
-        - Fixed Android 11 Decryption
-        - Notch Adjustment
+        - Source side changes
     working_directory: /home/builder/pitchblack
     steps:
       - run:
