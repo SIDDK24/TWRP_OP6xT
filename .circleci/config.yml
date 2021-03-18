@@ -18,7 +18,7 @@ jobs:
       #TEST_BUILD: 'true'
       MAINTAINER: '@SIDDK'
       CHANGELOG: |
-        - Source side changes
+        - added EXFAT & NTFS support
     working_directory: /home/builder/pitchblack
     steps:
       - run:
