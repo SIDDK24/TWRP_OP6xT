@@ -35,7 +35,7 @@ jobs:
          uses: rokibhasansagar/slimhub_actions@main
 
        - name: Auto Adapt Manifest
-         run: echo "MANIFEST=https://github.com/PitchBlackRecoveryProject/manifest_pb -b ${GITHUB_REF##*/}" >> $GITHUB_ENV
+         run: echo "MANIFEST=https://github.com/PitchBlackRecoveryProject/manifest_pb -b android-11.0" >> $GITHUB_ENV
 
        - name: Export Vars
          run: |
