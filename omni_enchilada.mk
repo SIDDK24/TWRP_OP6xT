@@ -27,6 +27,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 # Inherit some common Omni stuff.
 $(call inherit-product, vendor/pb/config/common.mk)
 
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/oneplus/enchilada/device.mk)
+
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 # Device identifier. This must come after all inclusions
