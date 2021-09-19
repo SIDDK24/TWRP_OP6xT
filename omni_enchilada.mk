@@ -32,17 +32,18 @@ $(call inherit-product, device/oneplus/enchilada/device.mk)
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
-# Device identifier. This must come after all inclusions
+## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := enchilada
 PRODUCT_NAME := omni_enchilada
-PRODUCT_BRAND := oneplus
-PRODUCT_MODEL := A6000
-PRODUCT_MANUFACTURER := oneplus
+PRODUCT_BRAND := OnePlus
+PRODUCT_MODEL := OnePlus A6000
+PRODUCT_MANUFACTURER := OnePlus
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=oneplus6 \
+    BUILD_PRODUCT=OnePlus6 \
+    TARGET_DEVICE=OnePlus6
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31
-
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
-    ro.bootimage.build.date.utc \
-    ro.build.date.utc
