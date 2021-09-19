@@ -132,6 +132,7 @@ PLATFORM_VERSION := 16.1.0
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
     libion \
+	libashmemd_client \
     libhardware_legacy \
 	libc \
 	libm \
@@ -144,6 +145,7 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libc.so \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libm.so \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libdl.so \
+	$(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libdl_android.so
 
 # Extras
