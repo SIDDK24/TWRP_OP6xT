@@ -109,13 +109,11 @@ PLATFORM_VERSION := 16.1.0
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
 	libashmemd_client \
-	ashmemd_aidl_interface-cpp \
-	libandroidicu
+	ashmemd_aidl_interface-cpp
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so \
-	$(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
-	$(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so
+	$(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so
 
 # TWRP specific build flags
 BOARD_HAS_NO_REAL_SDCARD := true
