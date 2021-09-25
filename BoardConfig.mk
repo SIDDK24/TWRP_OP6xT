@@ -76,7 +76,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery.wipe
-#TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
 # File systems
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -109,11 +109,13 @@ PLATFORM_VERSION := 16.1.0
 # Additional binaries & libraries needed for recovery
 TARGET_RECOVERY_DEVICE_MODULES += \
 	libashmemd_client \
-	ashmemd_aidl_interface-cpp
+	ashmemd_aidl_interface-cpp \
+	libandroidicu
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
 	$(TARGET_OUT_SHARED_LIBRARIES)/libashmemd_client.so \
-	$(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so
+	$(TARGET_OUT_SHARED_LIBRARIES)/ashmemd_aidl_interface-cpp.so \
+	$(TARGET_OUT_SHARED_LIBRARIES)/libandroidicu.so
 
 # TWRP specific build flags
 BOARD_HAS_NO_REAL_SDCARD := true
