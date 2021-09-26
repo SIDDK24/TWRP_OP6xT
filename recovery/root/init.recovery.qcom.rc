@@ -43,7 +43,7 @@ on early-fs
     start vold
 
 # Separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
-service qseecomd /system/bin/qseecomd
+service sbinqseecomd /system/bin/qseecomd
     user root
     group root
     disabled
@@ -89,13 +89,13 @@ service keystore /system/bin/keystore /tmp/misc/keystore
     disabled
     seclabel u:r:recovery:s0
 
-service gatekeeper-1-0-qti /system/bin/android.hardware.gatekeeper@1.0-service-qti
+service gatekeeper-1-0 /system/bin/android.hardware.gatekeeper@1.0-service-qti
     user root
     group root
     disabled
     seclabel u:r:recovery:s0
 
-service keymaster-3-0-qti /system/bin/android.hardware.keymaster@3.0-service-qti
+service keymaster-3-0 /system/bin/android.hardware.keymaster@3.0-service-qti
     user root
     group root
     disabled
@@ -146,20 +146,20 @@ on init
     start boot-1-0
     start prepdecrypt
     start time_daemon
-#    setprop crypto.ready 1
+    setprop crypto.ready 1
 
 on property:crypto.ready=0
-    stop system/binqseecomd
-    stop keymaster-3-0-qti
-    stop gatekeeper-1-0-qti
+    stop qseecomd
+    stop keymaster-3-0
+    stop gatekeeper-1-0
     stop servicemanager
 
 on property:crypto.ready=1
-    start system/bin/qseecomd
+    start qseecomd
 
 on property:vendor.sys.listeners.registered=true
-    start keymaster-3-0-qti
-    start gatekeeper-1-0-qti
+    start keymaster-3-0
+    start gatekeeper-1-0
     start servicemanager
     restart time_daemon
 
