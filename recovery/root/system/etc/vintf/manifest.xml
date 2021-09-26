@@ -2,8 +2,9 @@
     Input:
         manifest.xml
         framework_manifest.xml
+        framework_manifest.xml
 -->
-<manifest version="1.0" type="framework">
+<manifest version="2.0" type="framework">
     <hal format="hidl">
         <name>android.frameworks.displayservice</name>
         <transport>hwbinder</transport>
@@ -23,32 +24,6 @@
             <instance>default</instance>
         </interface>
         <fqname>@1.0::ISchedulingPolicyService/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.keymaster</name>
-        <transport>hwbinder</transport>
-        <version>3.0</version>
-        <interface>
-            <name>IKeymasterDevice</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@3.0::IKeymasterDevice/default</fqname>
-
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.gatekeeper</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IGatekeeper</name>
-            <instance>default</instance>
-        </interface>
-        <fqname>@1.0::IGatekeeper/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.vibrator</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
     </hal>
     <hal format="hidl">
         <name>android.frameworks.sensorservice</name>
@@ -112,18 +87,17 @@
     </hal>
     <hal format="native">
         <name>netutils-wrapper</name>
-        <transport></transport>
         <version>1.0</version>
     </hal>
     <hal format="hidl">
-        <name>vendor.oneplus.engnative.engineer</name>
+        <name>vendor.qti.hardware.qccsyshal</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IEngineer</name>
-            <instance>default</instance>
+            <name>IQccsyshal</name>
+            <instance>qccsyshal</instance>
         </interface>
-        <fqname>@1.0::IEngineer/default</fqname>
+        <fqname>@1.0::IQccsyshal/qccsyshal</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.radio.atcmdfwd</name>
@@ -135,33 +109,45 @@
         </interface>
         <fqname>@1.0::IAtCmdFwd/AtCmdFwdService</fqname>
     </hal>
-    <!-- ajinath.kumbhar@SYSTEM, 2019/11/07 [AN-733]- Enabling Synthetic Password requirement for Recovery. -->
     <hal format="hidl">
-        <name>vendor.oneplus.hardware.oprecovery</name>
+        <name>vendor.qti.hardware.sigma_miracast</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IOneplusRecovery</name>
-            <instance>default</instance>
+            <name>Isigma_miracast</name>
+            <instance>sigmahal</instance>
         </interface>
-        <fqname>@1.0::IOneplusRecovery/default</fqname>
+        <fqname>@1.0::Isigma_miracast/sigmahal</fqname>
     </hal>
-<!-- Danny.Xiao@SYSTEM, 2020/10/27 - add IBootControl 1.1 interface. -->
     <hal format="hidl">
-        <name>android.hardware.boot</name>
+        <name>vendor.qti.hardware.systemhelper</name>
         <transport>hwbinder</transport>
-        <version>1.1</version>
+        <version>1.0</version>
         <interface>
-            <name>IBootControl</name>
+            <name>ISystemEvent</name>
             <instance>default</instance>
         </interface>
-        <fqname>@1.1::IBootControl/default</fqname>
+        <interface>
+            <name>ISystemResource</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::ISystemEvent/default</fqname>
+        <fqname>@1.0::ISystemResource/default</fqname>
     </hal>
-    <vendor-ndk>
-        <version>Q</version>
-    </vendor-ndk>
+    <hal format="hidl">
+        <name>vendor.qti.hardware.wifi.keystore</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IKeystoreExt</name>
+            <instance>default</instance>
+        </interface>
+        <fqname>@1.0::IKeystoreExt/default</fqname>
+    </hal>
     <system-sdk>
+        <version>27</version>
         <version>28</version>
-        <version>Q</version>
+        <version>29</version>
+        <version>30</version>
     </system-sdk>
 </manifest>
