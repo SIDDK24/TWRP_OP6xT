@@ -1,0 +1,26 @@
+[
+  {
+    "remote":      "TeamWin",
+    "repository":  "android_device_qcom_twrp-common",
+    "target_path": "device/qcom/twrp-common",
+    "revision":    "android-11"
+ },
+  {
+    "remote": "LineageOS",
+    "repository": "android_hardware_qcom_bootctrl",
+    "target_path": "hardware/qcom-caf/bootctrl",
+    "revision": "lineage-18.1-caf"
+  },
+  {
+    "remote": "LineageOS",
+    "repository": "android_vendor_qcom_opensource_display-commonsys-intf",
+    "target_path": "vendor/qcom/opensource/commonsys-intf/display",
+    "revision": "lineage-18.1"
+  },
+  {
+    "remote": "LineageOS",
+    "repository": "android_vendor_qcom_opensource_interfaces",
+    "target_path": "vendor/qcom/opensource/interfaces",
+    "revision": "lineage-18.1"
+  }
+]
