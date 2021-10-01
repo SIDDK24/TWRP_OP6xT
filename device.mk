@@ -57,7 +57,6 @@ PRODUCT_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
-    vendor/qcom/opensource/commonsys-intf/display
 
 # tzdata
 PRODUCT_PACKAGES += \
