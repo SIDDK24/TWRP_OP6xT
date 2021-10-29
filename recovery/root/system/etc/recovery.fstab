@@ -32,10 +32,10 @@
 #TODO: Add 'check' as fs_mgr_flags with data partition.
 # Currently we dont have e2fsck compiled. So fs check would failed.
 
-#<src>                                                 <mnt_point>               <type>  <mnt_flags and options>                            <fs_mgr_flags>
-/dev/block/bootdevice/by-name/userdata                  /data                     ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard wait,check,fileencryption=ice,quota,reservedsize=512M
-/dev/block/bootdevice/by-name/userdata                  /data                     f2fs    noatime,nosuid,nodev,discard                         wait,check,fileencryption=ice,quota
+#<src>											<mnt_point>		<type>	<mnt_flags and options>										<fs_mgr_flags>
+/dev/block/bootdevice/by-name/userdata			/data			ext4	noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard		wait,check,fileencryption=ice:aes-256-cts,quota,reservedsize=512M
+/dev/block/bootdevice/by-name/userdata			/data			f2fs	noatime,nosuid,nodev,discard								wait,check,fileencryption=ice:aes-256-cts,quota
 # Need to have this entry in here even though the mount point itself is no longer needed.
 # The update_engine code looks for this entry in order to determine the boot device address
 # and fails if it does not find it.
-/dev/block/bootdevice/by-name/misc                      /misc              emmc    defaults                                             defaults
+/dev/block/bootdevice/by-name/misc				/misc			emmc	defaults													defaults
