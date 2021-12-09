@@ -20,16 +20,27 @@ on property:ro.crypto.state=encrypted
 on property:crypto.ready=1 && property:hwservicemanager.ready=true
     start qseecomd
 
-on property:sys.listeners.registered=true
+on property:sys.listeners.registered=true && property:ro.boot.project_codename=enchilada
     start keymaster-3-0-qti
 
-on property:vendor.sys.listeners.registered=true
+on property:vendor.sys.listeners.registered=true && property:ro.boot.project_codename=enchilada
     start keymaster-3-0-qti
+
+on property:sys.listeners.registered=true && property:ro.boot.project_codename=fajita
+    start keymaster-4-0-qti
+
+on property:vendor.sys.listeners.registered=true && property:ro.boot.project_codename=fajita
+    start keymaster-4-0-qti
 
 on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=*
     setprop crypto.ready 0
     stop qseecomd
+
+on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=* && property:ro.boot.project_codename=enchilada
     stop keymaster-3-0-qti
+
+on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=* && property:ro.boot.project_codename=fajita
+    stop keymaster-4-0-qti
 
 # For Android 10+ trees, services should be placed in /system/bin in the recovery ramdisk
 # For older trees, the services should be placed in /sbin
@@ -64,3 +75,10 @@ service keymaster-3-0-qti /system/bin/android.hardware.keymaster@3.0-service-qti
     oneshot
     seclabel u:r:recovery:s0
 
+service keymaster-4-0-qti /system/bin/android.hardware.keymaster@4.0-service-qti
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0

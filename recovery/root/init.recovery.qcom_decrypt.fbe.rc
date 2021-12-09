@@ -10,7 +10,12 @@ on property:twrp.all.users.decrypted=true
     setprop crypto.ready 0
     stop qseecomd
     stop gatekeeper-1-0-qti
+
+on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=enchilada
     stop keymaster-3-0-qti
+
+on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=fajita
+    stop keymaster-4-0-qti
 
 # For Android 10+ trees, services should be placed in /system/bin in the recovery ramdisk
 # For older trees, the services should be placed in /sbin
