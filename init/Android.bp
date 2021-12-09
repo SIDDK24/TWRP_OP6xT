@@ -15,9 +15,9 @@
 //
 
 cc_library_static {
-    name: "libinit_enchilada",
+    name: "libinit_OP6xT",
     recovery_available: true,
-    srcs: ["init_enchilada.cpp"],
+    srcs: ["init_OP6xT.cpp"],
     include_dirs: [
         "system/core/base/include",
         "system/core/init"

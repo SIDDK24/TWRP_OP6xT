@@ -18,6 +18,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE), enchilada)
+ifeq ($(TARGET_DEVICE), OP6xT)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 endif

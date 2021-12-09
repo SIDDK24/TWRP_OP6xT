@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/oneplus/enchilada
+DEVICE_PATH := device/oneplus/OP6xT
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
@@ -148,5 +148,5 @@ PB_TORCH_PATH := "/sys/class/leds/led:torch_0"
 PB_DISABLE_DEFAULT_DM_VERITY := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_enchilada
-TARGET_RECOVERY_DEVICE_MODULES := libinit_enchilada
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_OP6xT
+TARGET_RECOVERY_DEVICE_MODULES := libinit_OP6xT

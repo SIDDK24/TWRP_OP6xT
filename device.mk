@@ -1,7 +1,7 @@
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-LOCAL_PATH := device/oneplus/enchilada
+LOCAL_PATH := device/oneplus/OP6xT
 
 # define hardware platform
 PRODUCT_PLATFORM := sdm845

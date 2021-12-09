@@ -17,8 +17,8 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := enchilada
-DEVICE_PATH := device/oneplus/enchilada
+PRODUCT_RELEASE_NAME := OP6xT
+DEVICE_PATH := device/oneplus/OP6xT
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
@@ -27,22 +27,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, vendor/pb/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oneplus/enchilada/device.mk)
+$(call inherit-product, device/oneplus/OP6xT/device.mk)
 
 PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := enchilada
-PRODUCT_NAME := omni_enchilada
+PRODUCT_DEVICE := OP6xT
+PRODUCT_NAME := omni_OP6xT
 PRODUCT_BRAND := OnePlus
-PRODUCT_MODEL := OnePlus A6000
+PRODUCT_MODEL := SDM845
 PRODUCT_MANUFACTURER := OnePlus
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=oneplus6 \
-    BUILD_PRODUCT=OnePlus6 \
-    TARGET_DEVICE=OnePlus6 \
-	PRODUCT_DEVICE=OnePlus6
 
 # HACK: Set vendor patch level
 PRODUCT_PROPERTY_OVERRIDES += \
