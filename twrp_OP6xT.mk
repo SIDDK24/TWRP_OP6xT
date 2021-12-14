@@ -23,8 +23,8 @@ DEVICE_PATH := device/oneplus/OP6xT
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 
-# Inherit some common Omni stuff.
-$(call inherit-product, vendor/pb/config/common.mk)
+# Inherit some common twrp stuff.
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/oneplus/OP6xT/device.mk)
@@ -33,11 +33,7 @@ PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/roo
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := OP6xT
-PRODUCT_NAME := omni_OP6xT
+PRODUCT_NAME := twrp_OP6xT
 PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := SDM845
 PRODUCT_MANUFACTURER := OnePlus
-
-# HACK: Set vendor patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.build.security_patch=2099-12-31
