@@ -17,6 +17,6 @@
 #
 
 PRODUCT_MAKEFILES := \
-     $(LOCAL_DIR)/omni_OP6xT.mk
+     $(LOCAL_DIR)/twrp_OP6xT.mk
 
-COMMON_LUNCH_CHOICES := omni_OP6xT-eng
+COMMON_LUNCH_CHOICES := twrp_OP6xT-eng

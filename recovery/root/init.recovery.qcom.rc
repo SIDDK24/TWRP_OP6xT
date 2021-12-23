@@ -25,8 +25,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import /init.recovery.qcom_decrypt.rc
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -34,7 +32,68 @@ on fs
 	symlink /dev/block/bootdevice/by-name/oem_stanvbk /dev/block/bootdevice/by-name/oem_stanvbk_b
 	symlink /dev/block/bootdevice/by-name/oem_dycnvbk /dev/block/bootdevice/by-name/oem_dycnvbk_a
 	symlink /dev/block/bootdevice/by-name/oem_dycnvbk /dev/block/bootdevice/by-name/oem_dycnvbk_b
+	chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+    install_keyring
 	start boot-hal-1-0
+
+on early-fs
+    start vold
+
+service prepdecrypt /system/bin/prepdecrypt.sh
+    user root
+    group root
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service qseecomd /system/bin/qseecomd
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keymaster-3-0-qti /system/bin/android.hardware.keymaster@3.0-service-qti
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keymaster-4-0-qti /system/bin/android.hardware.keymaster@4.0-service-qti
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service gatekeeper-1-0-qti /system/bin/android.hardware.gatekeeper@1.0-service-qti
+    user root
+    group root
+    setenv LD_LIBRARY_PATH /vendor/lib64:/vendor/lib:/system/lib64:/system/lib:/sbin
+    disabled
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keystore_auth /system/bin/keystore_auth
+    oneshot
+    user system
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+# keystore is started and stopped on demand by TWRP
+service keystore /system/bin/keystore /tmp/misc/keystore
+    user root
+    group root drmrpc readproc log
+    disabled
+    seclabel u:r:recovery:s0
 
 service patchfakepartitions-service /system/bin/patchfakepartitions-service.sh
     user root
@@ -50,3 +109,47 @@ on boot
     start patchfakepartitions-service
     start health-hal-2-1
 
+on property:ro.crypto.state=encrypted
+    start prepdecrypt
+
+on property:crypto.ready=1 && property:hwservicemanager.ready=true
+    start qseecomd
+
+on property:sys.listeners.registered=true && property:ro.boot.project_codename=enchilada
+    start keymaster-3-0-qti
+
+on property:vendor.sys.listeners.registered=true && property:ro.boot.project_codename=enchilada
+    start keymaster-3-0-qti
+
+on property:sys.listeners.registered=true && property:ro.boot.project_codename=fajita
+    start keymaster-4-0-qti
+
+on property:vendor.sys.listeners.registered=true && property:ro.boot.project_codename=fajita
+    start keymaster-4-0-qti
+
+on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=*
+    setprop crypto.ready 0
+    stop qseecomd
+
+on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=* && property:ro.boot.project_codename=enchilada
+    stop keymaster-3-0-qti
+
+on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=* && property:ro.boot.project_codename=fajita
+    stop keymaster-4-0-qti
+	
+on property:ro.crypto.state=encrypted && property:ro.crypto.type=file
+    install_keyring
+
+on property:vendor.sys.listeners.registered=true
+    start gatekeeper-1-0-qti
+
+on property:twrp.all.users.decrypted=true
+    setprop crypto.ready 0
+    stop qseecomd
+    stop gatekeeper-1-0-qti
+
+on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=enchilada
+    stop keymaster-3-0-qti
+
+on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=fajita
+    stop keymaster-4-0-qti

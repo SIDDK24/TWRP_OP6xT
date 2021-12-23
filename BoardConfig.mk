@@ -22,6 +22,10 @@ DEVICE_PATH := device/oneplus/OP6xT
 ALLOW_MISSING_DEPENDENCIES := true
 BUILD_BROKEN_DUP_RULES := true
 
+# Init
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_OP6xT
+TARGET_RECOVERY_DEVICE_MODULES := libinit_OP6xT
+
 # Architecture
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -85,12 +89,14 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 118112366592
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USES_MKE2FS := true
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RECOVERY := true
 BOARD_USES_RECOVERY_AS_BOOT := true
+BOARD_ROOT_EXTRA_FOLDERS := op1 op2 op_odm
 
 # Partitions (listed in the file) to be wiped under recovery.
 TARGET_RECOVERY_WIPE := $(DEVICE_PATH)/recovery.wipe
@@ -99,9 +105,6 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 # Workaround for error copying vendor files to recovery ramdisk
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
 TARGET_COPY_OUT_VENDOR := vendor
-
-# Use mke2fs to create ext4 images
-TARGET_USES_MKE2FS := true
 
 # Crypto
 TW_INCLUDE_CRYPTO := true
@@ -145,6 +148,6 @@ TW_OVERRIDE_SYSTEM_PROPS := \
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 
-# Init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_OP6xT
-TARGET_RECOVERY_DEVICE_MODULES := libinit_OP6xT
+# Android Verified Boot
+BOARD_AVB_ENABLE := true
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
