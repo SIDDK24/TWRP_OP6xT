@@ -157,11 +157,11 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 SHRP_OFFICIAL := true
 # NOTE - Dont use '-' or blank spaces in flag values , otherwise it will create build errors or other bugs in recovery (Excluding SHRP_PATH,SHRP_REC). 
 # Path of your SHRP Tree
-SHRP_PATH := device/oneplus/enchilada
+SHRP_PATH := device/oneplus/OP6xT
 # Maintainer name *
 SHRP_MAINTAINER := SIDDK
 # Device codename *
-SHRP_DEVICE_CODE := enchilada
+SHRP_DEVICE_CODE := OP6xT
 # Recovery Type (It can be treble,normal,SAR) [Only for About Section] *
 SHRP_REC_TYPE := Treble
 # Recovery Type (It can be A/B or A_only) [Only for About Section] *
@@ -188,3 +188,5 @@ SHRP_FLASH := 1
 SHRP_FLASH_MAX_BRIGHTNESS := 200
 # Use this flag only if your device is A/B *
 SHRP_AB := true
+# Check your device's recovery path, dont use blindly
+SHRP_REC := no_recovery_partition
