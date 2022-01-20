@@ -65,5 +65,8 @@ void vendor_load_properties()
     } else if (project_codename == "fajita") {
         property_override("ro.boot.product.vendor.sku", "km4");
         model_property_override("OnePlus6T", "OnePlus6T", "OnePlus A6013");
+    } else if (project_codename == "fajitat") {
+        property_override("ro.boot.product.vendor.sku", "km4");
+        model_property_override("OnePlus6T", "OnePlus6T", "OnePlus A6013");
     }
 }

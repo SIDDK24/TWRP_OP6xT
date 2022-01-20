@@ -127,6 +127,12 @@ on property:sys.listeners.registered=true && property:ro.boot.project_codename=f
 on property:vendor.sys.listeners.registered=true && property:ro.boot.project_codename=fajita
     start keymaster-4-0-qti
 
+on property:sys.listeners.registered=true && property:ro.boot.project_codename=fajitat
+    start keymaster-4-0-qti
+
+on property:vendor.sys.listeners.registered=true && property:ro.boot.project_codename=fajitat
+    start keymaster-4-0-qti
+
 on property:ro.crypto.type=block && property:ro.crypto.fs_crypto_blkdev=*
     setprop crypto.ready 0
     stop qseecomd
@@ -152,4 +158,7 @@ on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=e
     stop keymaster-3-0-qti
 
 on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=fajita
+    stop keymaster-4-0-qti
+
+on property:twrp.all.users.decrypted=true && property:ro.boot.project_codename=fajitat
     stop keymaster-4-0-qti
