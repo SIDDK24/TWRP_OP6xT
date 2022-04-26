@@ -9,12 +9,13 @@ LOCAL_PATH := device/oneplus/OP6xT
 # define hardware platform
 PRODUCT_PLATFORM := sdm845
 
+# VNDK
+PRODUCT_TARGET_VNDK_VERSION := 29
+PRODUCT_EXTRA_VNDK_VERSIONS := $(PRODUCT_TARGET_VNDK_VERSION)
+
 # A/B support
 AB_OTA_UPDATER := true
 
-# A/B updater updatable partitions list. Keep in sync with the partition list
-# with "_a" and "_b" variants in the device. Note that the vendor can add more
-# more partitions to this list for the bootloader and radio.
 AB_OTA_PARTITIONS += \
     boot \
     system \

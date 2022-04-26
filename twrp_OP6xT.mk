@@ -29,8 +29,6 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/oneplus/OP6xT/device.mk)
 
-PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,$(LOCAL_PATH)/recovery/root,recovery/root)
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := OP6xT
 PRODUCT_NAME := twrp_OP6xT

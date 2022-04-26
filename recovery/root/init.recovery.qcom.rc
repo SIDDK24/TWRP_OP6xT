@@ -37,6 +37,8 @@ on fs
     chmod 0664 /dev/ion
     chown system system /dev/ion
     install_keyring
+
+on post-fs
 	start boot-hal-1-0
 
 on early-fs
@@ -107,7 +109,7 @@ on boot
     write /proc/touchpanel/gesture_enable 1
     write /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pmi8998@2:qcom,qpnp-smb2/power_supply/usb/otg_switch 1
     start patchfakepartitions-service
-    start health-hal-2-1
+	start health-hal-2-1
 
 on property:ro.crypto.state=encrypted
     start prepdecrypt
