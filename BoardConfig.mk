@@ -82,6 +82,10 @@ BOARD_KERNEL_SEPARATED_DTBO := true
 TARGET_KERNEL_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+#TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
+#TARGET_KERNEL_CLANG_COMPILE := true
+#TARGET_KERNEL_CLANG_VERSION := r383902b
+#TARGET_KERNEL_CONFIG := enchilada_defconfig
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -115,6 +119,8 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 PLATFORM_VERSION := 127
+#PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
 PLATFORM_SECURITY_PATCH := 2127-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
@@ -131,6 +137,7 @@ TW_MAX_BRIGHTNESS := 1023
 TW_DEFAULT_BRIGHTNESS := 420
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.0/lun.%d/file
+TW_QCOM_ATS_OFFSET := 1634734131000
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 TW_NO_SCREEN_BLANK := true
 TW_USE_TOOLBOX := true
@@ -151,7 +158,6 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 
 
-PRODUCT_ENFORCE_VINTF_MANIFEST := true
 
 #
 # For local builds only
@@ -164,13 +170,7 @@ endif
 
 # Custom TWRP Versioning
 ifneq ($(wildcard device/common/version-info/.),)
-    CUSTOM_TWRP_VERSION_PREFIX := CPTB
-
-    include device/common/version-info/custom_twrp_version.mk
-
-    ifeq ($(CUSTOM_TWRP_VERSION),)
-        CUSTOM_TWRP_VERSION := $(shell date +%Y%m%d)-01
-    endif
+    CUSTOM_TWRP_DEVICE_VERSION := 0
 endif
 #
 # end local build flags
