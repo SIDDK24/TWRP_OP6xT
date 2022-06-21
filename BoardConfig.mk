@@ -116,7 +116,7 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 BOARD_SUPPRESS_SECURE_ERASE := true
 PLATFORM_VERSION := 127
-PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
+#PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 PLATFORM_SECURITY_PATCH := 2127-12-31
 VENDOR_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 
@@ -153,26 +153,3 @@ TARGET_USES_LOGD := true
 
 
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
-
-#
-# For local builds only
-#
-# TWRP zip installer
-ifneq ($(wildcard bootable/recovery/installer/.),)
-    USE_RECOVERY_INSTALLER := true
-    RECOVERY_INSTALLER_PATH := bootable/recovery/installer
-endif
-
-# Custom TWRP Versioning
-ifneq ($(wildcard device/common/version-info/.),)
-    CUSTOM_TWRP_VERSION_PREFIX := CPTB
-
-    include device/common/version-info/custom_twrp_version.mk
-
-    ifeq ($(CUSTOM_TWRP_VERSION),)
-        CUSTOM_TWRP_VERSION := $(shell date +%Y%m%d)-01
-    endif
-endif
-#
-# end local build flags
-#
